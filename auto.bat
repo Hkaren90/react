@@ -4,20 +4,8 @@ title React Lab Automation
 
 :menu
 cls
-echo =========================
-echo     REACT LAB FILES
-echo =========================
 echo.
-echo 1
-echo 2
-echo 3
-echo 4
-echo 5
-echo 6
-echo 7
-echo 8
-echo 9
-echo 10
+echo "enter the exp number"
 echo 0. Exit
 echo.
 set /p exp=Enter Experiment Number: 
