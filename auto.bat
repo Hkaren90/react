@@ -1,0 +1,53 @@
+@echo off
+setlocal enabledelayedexpansion
+title React Lab Automation
+
+:menu
+cls
+echo =========================
+echo     REACT LAB FILES
+echo =========================
+echo.
+echo 1
+echo 2
+echo 3
+echo 4
+echo 5
+echo 6
+echo 7
+echo 8
+echo 9
+echo 10
+echo 0. Exit
+echo.
+set /p exp=Enter Experiment Number: 
+
+if "%exp%"=="0" exit
+if "%exp%"=="" goto menu
+if %exp% LSS 0 goto menu
+if %exp% GTR 10 goto menu
+
+cls
+echo =========================
+echo Experiment %exp%
+echo =========================
+echo.
+
+curl -s https://api.github.com/repos/Hkaren90/react/contents/%exp% > temp.txt
+
+for /f "tokens=2 delims=:," %%a in ('findstr /i "\"name\"" temp.txt') do (
+    set file=%%~a
+    set file=!file:"=!
+    set file=!file: =!
+
+    echo ==================================
+    echo !file!
+    echo ==================================
+    curl -sL https://raw.githubusercontent.com/Hkaren90/react/main/%exp%/!file!
+    echo.
+    echo.
+)
+
+del temp.txt
+pause
+goto menu
