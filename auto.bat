@@ -1,6 +1,5 @@
 @echo off
 setlocal enabledelayedexpansion
-title React Lab Automation
 
 :menu
 cls
